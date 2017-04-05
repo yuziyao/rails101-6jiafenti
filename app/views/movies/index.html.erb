@@ -1,5 +1,6 @@
 <div class="col-md-12">
   <div>
+
     <%= link_to("New movie", new_movie_path, class: "btn btn-primary pull-right") %>
   </div>
   <table class="table table-hover">
@@ -19,9 +20,11 @@
         <td><%= movie.description %></td>
         <td><%= movie.user.email %></td>
         <td>
+          <% if current_user && current_user == movie.user %>
           <%= link_to("Edit", edit_movie_path(movie), class: "btn btn-default btn-sm") %>
           <%= link_to("Delete", movie_path(movie), class: "btn btn-default btn-sm",
               method: :delete, data: { confirm: "Are you sure?" } ) %>
+          <% end %>
         </td>
       </tr>
       <% end %>
