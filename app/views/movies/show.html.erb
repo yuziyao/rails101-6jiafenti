@@ -8,4 +8,22 @@
   </div>
   <h2><%= @movie.title %></h2>
   <p><%= @movie.description %></p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Review content</th>
+        <th>Reviewer</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.content %></td>
+        <td><%= review.user.email %></td>
+        <td><%= review.created_at %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
