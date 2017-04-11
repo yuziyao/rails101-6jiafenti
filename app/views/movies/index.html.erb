@@ -13,21 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @movies.each do |movie| %>
-      <tr>
-        <td>#</td>
-        <td><%= link_to(movie.title, movie_path(movie)) %></td>
-        <td><%= movie.description %></td>
-        <td><%= movie.user.email %></td>
-        <td>
-          <% if current_user && current_user == movie.user %>
-          <%= link_to("Edit", edit_movie_path(movie), class: "btn btn-default btn-sm") %>
-          <%= link_to("Delete", movie_path(movie), class: "btn btn-default btn-sm",
-              method: :delete, data: { confirm: "Are you sure?" } ) %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
+      <%= render :partial => "movie_item", :collection => @movies, :as => :movie %>
     </tbody>
   </table>
 </div>
